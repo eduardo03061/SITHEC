@@ -8,3 +8,9 @@ Run `pnpm start` for a dev server. Navigate to `http://localhost:4200/`. The app
 
 ## Libraries
 * Graphql
+
+## Contact:
+
+#### Nombre: Eduardo Alejandro Hernandez Garcia
+#### Contacto: +52 312 271 4600
+#### Email: eduardoalejandrohg@gmail.com
