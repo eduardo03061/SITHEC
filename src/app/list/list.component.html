@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <h1 class="text-center">Bienvenido a Mi Aplicación</h1>
+  <p class="lead text-center">
+    Esta es una aplicación que enlista a los characters de rick and morty:
+  </p>
+
+  <div class="row mt-5 justify-content-center">
+    @if(!characters){
+    <div class="row justify-content-center">
+      <div class="spinner-border mt-5" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    }@else {
+
+    <div class="col-xl-8">
+      <table class="table-responsive table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Species</th>
+            <th scope="col">Status</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (character of characters; track character.id) {
+          <tr>
+            <td>
+              <a
+                [routerLink]="['character', character.id, 'details']"
+                routerLink="/"
+                >{{ character.id }}</a
+              >
+            </td>
+            <td>{{ character.name }}</td>
+            <td>{{ character.species }}</td>
+            <td>{{ character.status }}</td>
+            <td>
+              <img [src]="character.image" alt="character" class="img-fluid" />
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      <nav aria-label="Page navigation example">
+        <ul class="justify-content-center pagination">
+          <li class="page-item">
+            <button
+              class="page-link"
+              (click)="changePage(currentPage - 1)"
+              [disabled]="paginate$?.prev === null"
+            >
+              <span aria-hidden="true">&laquo;</span>
+            </button>
+          </li>
+
+          <li class="page-item">
+            <a class="page-link active" href="#"
+              >Page {{ currentPage }} of {{ paginate$?.pages }}</a
+            >
+          </li>
+
+          <li class="page-item">
+            <button
+              class="page-link"
+              (click)="changePage(currentPage + 1)"
+              [disabled]="paginate$?.next === null"
+            >
+              <span aria-hidden="true">&raquo;</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    }
+  </div>
+</div>
